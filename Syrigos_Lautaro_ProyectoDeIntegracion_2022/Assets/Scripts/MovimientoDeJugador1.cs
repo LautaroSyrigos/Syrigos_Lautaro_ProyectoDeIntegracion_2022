@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MovimientoDeJugador1 : MonoBehaviour
 {
+    [Header("Variables del jugador")]
+
     private CharacterController controller;
     private Vector3 MovimientoJugador = Vector3.zero;
     [SerializeField] private float VelocidadJugador;
