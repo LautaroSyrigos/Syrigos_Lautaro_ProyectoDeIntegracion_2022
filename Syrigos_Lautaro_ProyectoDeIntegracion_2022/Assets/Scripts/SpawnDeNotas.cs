@@ -1,36 +1,50 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnDeNotas : MonoBehaviour
 {
-    public GameObject[] myObjects;
-    private bool spawned = false;
+    // Instanciar prefabs
+    public GameObject[] prefabs;// Array que almacena los prefabs que quieres instanciar
+    public List<GameObject> PosicionesReferencias;// Lista que almacena los GameObjects vacíos que utilizarás como referencia
+    private List<Vector3> PosicionesUsadas = new List<Vector3>();// Lista que almacena las posiciones de los GameObjects vacíos utilizados para instanciar los prefabs
 
-    void Update()
+
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !spawned)
+        #region Funcion para spawnear las notas musicales.
+        foreach (GameObject prefab in prefabs)// Recorre el array de prefabs
         {
-            for (int i = 0; i < myObjects.Length; i++)
+            // Selecciona una posición aleatoria del array de referencias vacías que no haya sido utilizada antes
+            Vector3 PosicionRandom = Vector3.zero;
+            bool PosicionEncontrada = false;
+            while (!PosicionEncontrada)
             {
-                Vector3 randomSpawnPosition = new Vector3(Random.Range(-8, 10), 5, Random.Range(-8, 10));
-                Instantiate(myObjects[i], randomSpawnPosition, Quaternion.identity);
+                int randomIndex = Random.Range(0, PosicionesReferencias.Count);
+                PosicionRandom = PosicionesReferencias[randomIndex].transform.position;
+                if (!PosicionesUsadas.Contains(PosicionRandom))
+                {
+                    PosicionesUsadas.Add(PosicionRandom);
+                    PosicionEncontrada = true;
+                }
             }
-            spawned = true;
+            Instantiate(prefab, PosicionRandom, Quaternion.identity);// Instancia el prefab en la posición seleccionada
         }
+        #endregion
+
+
     }
 
-
-    /*
-    public GameObject[] myObjects;
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < myObjects.Length; i++)
-            {
-                Vector3 randomSpawnPosition = new Vector3(Random.Range(-8, 10), 5, Random.Range(-8, 10));
-                Instantiate(myObjects[i], randomSpawnPosition, Quaternion.identity);
-            }
-        }
-    }*/
+        
+    }
+
+    /*TODO
+        * 
+        * identifique los triggers correctos 
+        * una vez que active el pilar empieza el temporizador+si no lo consigue game over y opcion de reiniciar+ganaste te manda al inicio
+        * Muestre en la iu lo que hay que hacer
+        */
 }
