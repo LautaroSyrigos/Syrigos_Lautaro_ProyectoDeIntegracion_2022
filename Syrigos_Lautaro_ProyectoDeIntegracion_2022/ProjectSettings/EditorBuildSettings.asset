@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/Menu inicio.unity
+    guid: 8b4327ff6be8d7748abcb2271ad888e1
+  - enabled: 1
+    path: Assets/Scenes/Menu_Selector.unity
+    guid: 37b24c91f85df6e42add48dd0b10b41c
+  - enabled: 1
     path: Assets/Scenes/Transicion Random.unity
     guid: eba21e3fcac2d28458b803cff9cb3f16
   - enabled: 1
