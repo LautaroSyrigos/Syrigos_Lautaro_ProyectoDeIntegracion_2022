@@ -14,8 +14,8 @@ public class MecanicaAgarrarObjetos : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                AudioSource.PlayClipAtPoint(audio, transform.position);
-
+                //AudioSource.PlayClipAtPoint(audio, transform.position);
+                
                 ObjetoEnMano = ObjetoParaAgarrar;
                 ObjetoEnMano.GetComponent<Objeto>().SePuedeAgarrar = false;
                 ObjetoEnMano.transform.SetParent(Manos);
