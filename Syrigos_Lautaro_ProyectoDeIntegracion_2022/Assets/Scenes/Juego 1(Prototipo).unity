@@ -191,7 +191,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31551182}
-  m_LocalRotation: {x: 0.27904692, y: 1.4112265e-16, z: -7.849831e-16, w: 0.9602775}
+  m_LocalRotation: {x: 0.2790469, y: 0.000000028618503, z: -0.000000008316246, w: 0.9602775}
   m_LocalPosition: {x: 5.1344795, y: 8.03, z: -7.1700015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 1008172983}
   - component: {fileID: 1008172987}
   m_Layer: 0
-  m_Name: cubo
+  m_Name: Correcto
   m_TagString: Agarrar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emptyObject: {fileID: 645081502}
-  nombreObjetoEspecial: cubo
+  nombreObjetoEspecial: Correcto
 --- !u!1 &1865774057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,7 +2626,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908398878}
-  m_LocalRotation: {x: 0.27904692, y: 1.4112265e-16, z: -7.849831e-16, w: 0.9602775}
+  m_LocalRotation: {x: 0.2790469, y: 0.000000028618503, z: -0.000000008316246, w: 0.9602775}
   m_LocalPosition: {x: 5.1344795, y: 8.03, z: -7.1700015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2741,7 +2741,7 @@ PrefabInstance:
     - target: {fileID: 4610330779600008952, guid: fa76aaee1fcbaa046b9567bd5fe1519e,
         type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 4610330779600008953, guid: fa76aaee1fcbaa046b9567bd5fe1519e,
         type: 3}
