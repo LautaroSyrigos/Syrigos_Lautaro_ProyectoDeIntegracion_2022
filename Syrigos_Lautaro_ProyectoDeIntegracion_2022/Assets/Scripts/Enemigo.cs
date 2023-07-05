@@ -10,6 +10,10 @@ public class Enemigo : MonoBehaviour
     public temp_06 VidaScript;
     public float Distancia;
 
+    //public int VidaMax;
+    //public int DañoGolpe;
+
+
     private void Update()
     {
         if (Vector3.Distance(Objetivo.transform.position, transform.position)<Distancia)
@@ -27,4 +31,17 @@ public class Enemigo : MonoBehaviour
             VidaScript.health = VidaScript.health - 10;
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Puño")
+    //    {
+    //        VidaMax -= DañoGolpe;
+
+    //        if(VidaMax <= 0)
+    //        {
+    //            Destroy(gameObject);
+    //        }
+    //    }
+    //}
 }

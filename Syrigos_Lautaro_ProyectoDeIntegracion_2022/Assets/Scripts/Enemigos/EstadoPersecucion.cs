@@ -3,34 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EstadoVigilando : StateMachineBehaviour
+public class EstadoPersecucion : StateMachineBehaviour
 {
-    private float Temporizador;
-    private List<Transform> PuntosReferencias = new List<Transform>();
     private NavMeshAgent agent;
+    private Transform TransformDelJugador;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Temporizador = 0;
-        Transform PuntosDeReferenciaObjectos = GameObject.FindGameObjectWithTag("PuntoReferencia").transform;
-        foreach (Transform t in PuntosDeReferenciaObjectos)
-        {
-            PuntosReferencias.Add(t);
-        }
-        agent = animator.GetComponent<NavMeshAgent>();
-        agent.SetDestination(PuntosReferencias[0].position);
+        agent=animator.GetComponent<NavMeshAgent>();
+        TransformDelJugador = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
-            agent.SetDestination(PuntosReferencias[Random.Range(0, PuntosReferencias.Count)].position);
-        Temporizador += Time.deltaTime;
-        if (Temporizador > 5)
+        agent.SetDestination(TransformDelJugador.position);
+
+        float Distancia = Vector3.Distance(animator.transform.position, TransformDelJugador.position);
+        if (Distancia < 1)
         {
-            animator.SetBool("EstaVigilando", false);
+            animator.SetBool("EstaAtacando", true);
         }
     }
 

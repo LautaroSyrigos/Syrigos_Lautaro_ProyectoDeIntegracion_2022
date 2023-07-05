@@ -2,26 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EstadoIdle : StateMachineBehaviour
+public class EstadoAtacando : StateMachineBehaviour
 {
-    private float Temporizador;
-    // OnStateEnter se llama cuando comienza una transición y la máquina de estado comienza a evaluar este estado.
+    private Transform TransformDelJugador;
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Temporizador = 0;
+        TransformDelJugador = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // OnStateUpdate se llama en cada marco de actualización entre las devoluciones de llamada OnStateEnter y OnStateExit.
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Temporizador += Time.deltaTime;
-        if(Temporizador > 2) 
+
+        animator.transform.LookAt(TransformDelJugador);
+        float Distancia = Vector3.Distance(animator.transform.position, TransformDelJugador.position);
+        if (Distancia > 10)
         {
-            animator.SetBool("EstaVigilando", true);
+            animator.SetBool("EstaAtacando", false);
         }
     }
 
-    // OnStateExit se llama cuando finaliza una transición y la máquina de estado termina de evaluar este estado.
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
